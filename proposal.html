@@ -459,11 +459,20 @@ body{background:var(--navy);color:var(--white);font-family:'Poppins',sans-serif;
   </div>
 
   <!-- SUBMIT -->
-  <div class="submit-wrap">
+  <div class="submit-wrap" id="submitWrap">
     <h3>Ready to Submit?</h3>
     <p>Click below to open your email client with everything pre-filled and addressed to me. Hit send and I'll be in touch within 1–2 business days.</p>
-    <button class="submit-btn" onclick="submitForm()">Send My Proposal Request →</button>
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">Send My Proposal Request →</button>
     <div class="submit-note">This will open your default email app (Gmail, Apple Mail, Outlook, etc.) with your responses pre-loaded.</div>
+  </div>
+
+  <!-- CONFIRMATION (hidden until submit) -->
+  <div id="confirmBox" style="display:none;background:#0a2a0a;border:1px solid rgba(34,197,94,0.3);border-left:3px solid #22c55e;border-radius:10px;padding:28px 32px;text-align:center;margin-top:0;">
+    <div style="font-size:36px;margin-bottom:12px;">✅</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#22c55e;margin-bottom:8px;">You're all set!</div>
+    <div style="font-size:14px;color:#86efac;line-height:1.7;max-width:480px;margin:0 auto 20px;">Your email app should have opened with everything filled in. <strong>Just hit Send</strong> and I'll have your custom proposal ready within 1–2 business days.</div>
+    <div style="font-size:13px;color:#4ade80;background:rgba(34,197,94,0.08);border-radius:8px;padding:12px 20px;display:inline-block;">📧 Sending to: info@astoldbydanii.com</div>
+    <div style="margin-top:16px;font-size:12px;color:rgba(134,239,172,0.6);">Didn't open? <a href="mailto:info@astoldbydanii.com" style="color:#22c55e;">Click here to email directly</a></div>
   </div>
 
 </main>
@@ -559,7 +568,7 @@ Submitted by: ${name} | ${biz}
 
   const subject = encodeURIComponent(`Proposal Request — ${biz} (${name})`);
   const bodyEncoded = encodeURIComponent(body);
-  window.location.href = `mailto:info@astoldbydanii.com?subject=${subject}&body=${bodyEncoded}`;
+  const a = document.createElement('a'); a.href = `mailto:info@astoldbydanii.com?subject=${subject}&body=${bodyEncoded}`; document.body.appendChild(a); a.click(); document.body.removeChild(a); document.getElementById('submitWrap').style.display='none'; const box=document.getElementById('confirmBox'); box.style.display='block'; box.scrollIntoView({behavior:'smooth',block:'center'});
 }
 </script>
 </body>
