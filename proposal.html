@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website & Branding Proposal Prep — As Told By Danii</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#080F1E;--primary-blue:#6FB7DD;--deep-blue:#0C2E5F;
+  --accent-blue:#2F7BFF;--light-accent:#D9F3FF;--gold:#C9A84C;
+  --red:#FF4D6D;--white:#FFFFFF;--shadow:#1A2C44;--muted:#8BAAC5;
+}
+body{background:var(--navy);color:var(--white);font-family:'Poppins',sans-serif;font-weight:300;line-height:1.7;min-height:100vh;}
+
+.topbar{background:var(--deep-blue);border-bottom:1px solid rgba(111,183,221,0.2);padding:12px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.topbar-brand{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--primary-blue);}
+.topbar-brand span{color:var(--gold);}
+.topbar-tag{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+
+.hero{background:linear-gradient(160deg,var(--deep-blue) 0%,var(--navy) 60%);border-bottom:1px solid rgba(111,183,221,0.15);padding:72px 40px 60px;text-align:center;}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,62px);letter-spacing:3px;line-height:1.05;margin-bottom:20px;}
+.hero h1 span{color:var(--primary-blue);}
+.hero-sub{max-width:560px;margin:0 auto 32px;font-size:15px;color:#a8c8df;font-weight:300;}
+.hero-divider{width:60px;height:2px;background:var(--gold);margin:0 auto;}
+
+.intro-wrap{max-width:780px;margin:48px auto 0;padding:0 24px;}
+.intro-card{background:var(--shadow);border:1px solid rgba(111,183,221,0.18);border-left:3px solid var(--gold);border-radius:10px;padding:24px 28px;font-size:14.5px;color:#c2daea;line-height:1.8;}
+
+.content{max-width:780px;margin:40px auto 80px;padding:0 24px;}
+
+.section{margin-bottom:48px;}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(111,183,221,0.15);}
+.section-icon{width:36px;height:36px;border-radius:8px;background:rgba(47,123,255,0.12);border:1px solid rgba(47,123,255,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);}
+.section-note{font-size:12px;color:var(--muted);margin-top:2px;}
+
+.field-group{display:flex;flex-direction:column;gap:16px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:13px;font-weight:500;color:var(--white);}
+.field .hint{font-size:12px;color:var(--muted);margin-bottom:2px;}
+.field input,.field textarea,.field select{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(111,183,221,0.2);
+  border-radius:8px;
+  color:var(--white);
+  font-family:'Poppins',sans-serif;
+  font-size:13.5px;
+  font-weight:300;
+  padding:10px 14px;
+  width:100%;
+  transition:border-color 0.2s,background 0.2s;
+  outline:none;
+  resize:vertical;
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(138,170,197,0.45);}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--accent-blue);
+  background:rgba(47,123,255,0.06);
+}
+.field select option{background:#0C2E5F;color:var(--white);}
+.field textarea{min-height:80px;}
+
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+.pill-hint{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.pill{font-size:11.5px;font-weight:500;background:rgba(111,183,221,0.08);border:1px solid rgba(111,183,221,0.18);color:var(--primary-blue);padding:3px 10px;border-radius:20px;cursor:pointer;transition:background 0.15s,color 0.15s;user-select:none;}
+.pill:hover{background:rgba(111,183,221,0.18);}
+.pill.active{background:var(--accent-blue);border-color:var(--accent-blue);color:#fff;}
+.pill-label{font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;}
+
+/* CHECKBOX MULTI-SELECT */
+.multi-checks{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+.check-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid transparent;cursor:pointer;transition:background 0.15s,border-color 0.15s;}
+.check-item:hover{background:rgba(111,183,221,0.05);border-color:rgba(111,183,221,0.12);}
+.check-item input[type=checkbox]{accent-color:var(--accent-blue);width:15px;height:15px;cursor:pointer;flex-shrink:0;}
+.check-item span{font-size:13.5px;color:#c2daea;}
+
+/* SUBMIT AREA */
+.submit-wrap{background:var(--shadow);border:1px solid rgba(111,183,221,0.18);border-radius:12px;padding:32px;text-align:center;margin-top:48px;}
+.submit-wrap h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--white);margin-bottom:8px;}
+.submit-wrap p{font-size:14px;color:var(--muted);margin-bottom:24px;}
+.submit-btn{background:var(--accent-blue);color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;letter-spacing:1px;text-transform:uppercase;padding:16px 40px;border-radius:8px;border:none;cursor:pointer;transition:background 0.2s;width:100%;max-width:340px;}
+.submit-btn:hover{background:#2566e8;}
+.submit-note{font-size:12px;color:var(--muted);margin-top:14px;}
+
+.footer{background:var(--deep-blue);border-top:1px solid rgba(111,183,221,0.15);padding:48px 40px;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--white);margin-bottom:4px;}
+.footer-logo span{color:var(--gold);}
+.footer-tagline{font-size:13px;color:var(--muted);margin-bottom:20px;}
+.footer-contact{font-size:13px;color:var(--muted);line-height:2.2;}
+.footer-contact a{color:var(--primary-blue);text-decoration:none;}
+.footer-bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(111,183,221,0.1);font-size:11.5px;color:rgba(138,170,197,0.45);}
+
+@media(max-width:600px){
+  .topbar{padding:12px 16px;}
+  .hero{padding:48px 20px 40px;}
+  .content,.intro-wrap{padding:0 16px;}
+  .field-row{grid-template-columns:1fr;}
+  .footer{padding:40px 20px;}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">As Told By <span>Danii</span></div>
+  <div class="topbar-tag">Client Intake Form</div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">As Told By Danii · Brand & Web Services</div>
+  <h1>Website & Branding<br/><span>Proposal Prep</span></h1>
+  <p class="hero-sub">Fill out every section below and hit Submit — your responses will land directly in my inbox so I can build your customized proposal.</p>
+  <div class="hero-divider"></div>
+</section>
+
+<div class="intro-wrap">
+  <div class="intro-card">
+    Thank you for taking the time to meet with me — I'm genuinely excited to learn more about your vision. Complete each section as thoroughly as you can. The more detail you share, the more accurate your proposal will be. Hit <strong>Submit</strong> at the bottom when you're done.
+  </div>
+</div>
+
+<main class="content">
+
+  <!-- 1. BUSINESS INFORMATION -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🏢</div>
+      <div>
+        <div class="section-title">Business Information</div>
+        <div class="section-note">Tell me who you are and what you do</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field-row">
+        <div class="field">
+          <label for="biz_name">Business Name(s) *</label>
+          <input type="text" id="biz_name" placeholder="e.g. Glow Studio NYC" />
+        </div>
+        <div class="field">
+          <label for="contact_name">Your Name *</label>
+          <input type="text" id="contact_name" placeholder="First & Last Name" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="contact_email">Email Address *</label>
+          <input type="email" id="contact_email" placeholder="you@yourbusiness.com" />
+        </div>
+        <div class="field">
+          <label for="contact_phone">Phone Number</label>
+          <input type="tel" id="contact_phone" placeholder="(555) 000-0000" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="biz_description">Brief Description of Your Business *</label>
+        <div class="hint">What do you do and who do you serve?</div>
+        <textarea id="biz_description" placeholder="e.g. We're a mobile lash studio serving women in Brooklyn and Queens looking for luxury lash services at home..."></textarea>
+      </div>
+      <div class="field">
+        <label for="biz_services">Services / Products Offered</label>
+        <textarea id="biz_services" placeholder="List your main services or products..."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="current_website">Current Website URL(s)</label>
+          <input type="text" id="current_website" placeholder="https://yoursite.com (or 'None')" />
+        </div>
+        <div class="field">
+          <label for="social_links">Social Media Links</label>
+          <input type="text" id="social_links" placeholder="@handle or full URLs" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. WEBSITE INFORMATION -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🌐</div>
+      <div>
+        <div class="section-title">Website Information</div>
+        <div class="section-note">Answer for each website being considered</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <label>Website Purpose *</label>
+        <div class="hint">Select all that apply</div>
+        <div class="pill-hint" id="purpose_pills">
+          <span class="pill" data-group="purpose">Lead generation</span>
+          <span class="pill" data-group="purpose">Booking appointments</span>
+          <span class="pill" data-group="purpose">Online sales / E-commerce</span>
+          <span class="pill" data-group="purpose">Memberships</span>
+          <span class="pill" data-group="purpose">Information / Portfolio</span>
+          <span class="pill" data-group="purpose">Client portal</span>
+          <span class="pill" data-group="purpose">Other</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Pages Needed</label>
+        <div class="hint">Select all you'd like included</div>
+        <div class="pill-hint" id="pages_pills">
+          <span class="pill" data-group="pages">Home</span>
+          <span class="pill" data-group="pages">About</span>
+          <span class="pill" data-group="pages">Services</span>
+          <span class="pill" data-group="pages">Contact</span>
+          <span class="pill" data-group="pages">Booking</span>
+          <span class="pill" data-group="pages">Gallery</span>
+          <span class="pill" data-group="pages">Blog</span>
+          <span class="pill" data-group="pages">Shop</span>
+          <span class="pill" data-group="pages">FAQ</span>
+          <span class="pill" data-group="pages">Testimonials</span>
+          <span class="pill" data-group="pages">Events</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Features Needed</label>
+        <div class="hint">Select all that apply</div>
+        <div class="pill-hint" id="features_pills">
+          <span class="pill" data-group="features">Online booking</span>
+          <span class="pill" data-group="features">Contact forms</span>
+          <span class="pill" data-group="features">Online payments</span>
+          <span class="pill" data-group="features">Membership area</span>
+          <span class="pill" data-group="features">Client portal</span>
+          <span class="pill" data-group="features">E-commerce / Shop</span>
+          <span class="pill" data-group="features">Event registration</span>
+          <span class="pill" data-group="features">Email list signup</span>
+          <span class="pill" data-group="features">Chat / chatbot</span>
+          <span class="pill" data-group="features">Multi-language</span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="inspo_sites">Websites You Love (3–5 links)</label>
+        <div class="hint">Share URLs of sites whose look, feel, or layout you admire</div>
+        <textarea id="inspo_sites" placeholder="https://example.com&#10;https://example2.com&#10;https://example3.com"></textarea>
+      </div>
+      <div class="field">
+        <label for="launch_date">Target Launch Date</label>
+        <input type="date" id="launch_date" />
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. BRANDING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🎨</div>
+      <div>
+        <div class="section-title">Branding Information</div>
+        <div class="section-note">Share your existing identity — or describe your vision</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <label for="logo_status">Do you have an existing logo?</label>
+        <select id="logo_status">
+          <option value="">— Select —</option>
+          <option>Yes, I have a final logo</option>
+          <option>Yes, but it needs a refresh</option>
+          <option>No, I need a new logo designed</option>
+          <option>I have something but it's not official</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="brand_colors">Brand Colors</label>
+          <input type="text" id="brand_colors" placeholder="e.g. Navy blue, gold, white — or hex codes" />
+        </div>
+        <div class="field">
+          <label for="brand_fonts">Brand Fonts</label>
+          <input type="text" id="brand_fonts" placeholder="e.g. Poppins + Playfair Display (or 'Not established')" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Overall Look & Feel</label>
+        <div class="hint">Select all that describe your desired vibe</div>
+        <div class="pill-hint" id="vibe_pills">
+          <span class="pill" data-group="vibe">Luxury</span>
+          <span class="pill" data-group="vibe">Modern</span>
+          <span class="pill" data-group="vibe">Professional</span>
+          <span class="pill" data-group="vibe">Bold</span>
+          <span class="pill" data-group="vibe">Minimalist</span>
+          <span class="pill" data-group="vibe">Corporate</span>
+          <span class="pill" data-group="vibe">Family-Friendly</span>
+          <span class="pill" data-group="vibe">High-Energy</span>
+          <span class="pill" data-group="vibe">Elegant / Classic</span>
+          <span class="pill" data-group="vibe">Playful / Fun</span>
+          <span class="pill" data-group="vibe">Edgy / Street</span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="brand_notes">Additional Brand Notes</label>
+        <div class="hint">Any existing guidelines, materials, or specific notes about your brand</div>
+        <textarea id="brand_notes" placeholder="e.g. We have a brand guide on file. Our competitors use a lot of pink so we want to avoid that..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CONTENT & ASSETS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📁</div>
+      <div>
+        <div class="section-title">Content & Assets</div>
+        <div class="section-note">What you have ready — and what may need to be created</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <label>What content do you currently have ready?</label>
+        <div class="multi-checks" id="assets_checks">
+          <label class="check-item"><input type="checkbox" value="Professional / headshot photos" /><span>Professional / headshot photos</span></label>
+          <label class="check-item"><input type="checkbox" value="Service or product photos" /><span>Service or product photos</span></label>
+          <label class="check-item"><input type="checkbox" value="Video content" /><span>Video content (brand intro, testimonials, etc.)</span></label>
+          <label class="check-item"><input type="checkbox" value="Written bios / about sections" /><span>Written bios / About sections</span></label>
+          <label class="check-item"><input type="checkbox" value="Service descriptions" /><span>Service descriptions</span></label>
+          <label class="check-item"><input type="checkbox" value="Testimonials / reviews" /><span>Testimonials / reviews</span></label>
+          <label class="check-item"><input type="checkbox" value="Existing marketing materials (flyers, PDFs)" /><span>Existing marketing materials (flyers, PDFs)</span></label>
+          <label class="check-item"><input type="checkbox" value="None — starting from scratch" /><span>None — starting from scratch</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="content_notes">Content Notes</label>
+        <textarea id="content_notes" placeholder="Any additional details about what you have or what you'll need help creating..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. GOALS & VISION -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🎯</div>
+      <div>
+        <div class="section-title">Goals & Vision</div>
+        <div class="section-note">Help me understand the bigger picture</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <label for="primary_goal">Primary Goal of This Website *</label>
+        <div class="hint">What do you want a visitor to do when they land on your site?</div>
+        <textarea id="primary_goal" placeholder="e.g. Book a consultation, purchase a product, sign up for my email list..."></textarea>
+      </div>
+      <div class="field">
+        <label for="ideal_customer">Your Ideal Customer</label>
+        <div class="hint">Who are they? What do they want? What problem do you solve for them?</div>
+        <textarea id="ideal_customer" placeholder="e.g. Women 25–40 in NYC who want luxury beauty services without the salon wait time..."></textarea>
+      </div>
+      <div class="field">
+        <label for="differentiator">What Makes You Different from Competitors?</label>
+        <textarea id="differentiator" placeholder="What's your edge?"></textarea>
+      </div>
+      <div class="field">
+        <label for="biz_goals">Top 3 Business Goals Over the Next 12 Months</label>
+        <textarea id="biz_goals" placeholder="1. &#10;2. &#10;3. "></textarea>
+      </div>
+      <div class="field">
+        <label for="success_def">How Will You Define Success for This Project?</label>
+        <textarea id="success_def" placeholder="e.g. More bookings, a professional online presence, more sales..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. DOMAIN & HOSTING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔗</div>
+      <div>
+        <div class="section-title">Domain & Hosting</div>
+        <div class="section-note">Technical details that affect scope and setup timelines</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field-row">
+        <div class="field">
+          <label for="domain_name">Current Domain Name(s)</label>
+          <input type="text" id="domain_name" placeholder="yourbusiness.com (or 'Need one')" />
+        </div>
+        <div class="field">
+          <label for="registrar">Domain Registrar</label>
+          <select id="registrar">
+            <option value="">— Select —</option>
+            <option>GoDaddy</option>
+            <option>Namecheap</option>
+            <option>Squarespace</option>
+            <option>Google Domains</option>
+            <option>Wix</option>
+            <option>Other</option>
+            <option>Don't have a domain yet</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="hosting">Hosting Provider</label>
+          <input type="text" id="hosting" placeholder="GitHub Pages, Wix, GoDaddy, etc. (or 'Not sure')" />
+        </div>
+        <div class="field">
+          <label for="has_access">Do You Have Login Access?</label>
+          <select id="has_access">
+            <option value="">— Select —</option>
+            <option>Yes, I have full access</option>
+            <option>Partial access</option>
+            <option>No, I'll need to get access</option>
+            <option>Not applicable</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. ADDITIONAL SERVICES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">✨</div>
+      <div>
+        <div class="section-title">Additional Services</div>
+        <div class="section-note">Check anything you'd like included in your proposal</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <div class="multi-checks">
+          <label class="check-item"><input type="checkbox" value="Logo Design" /><span>Logo Design</span></label>
+          <label class="check-item"><input type="checkbox" value="Brand Strategy" /><span>Brand Strategy</span></label>
+          <label class="check-item"><input type="checkbox" value="Business Cards" /><span>Business Cards</span></label>
+          <label class="check-item"><input type="checkbox" value="Flyers / Brochures" /><span>Flyers / Brochures</span></label>
+          <label class="check-item"><input type="checkbox" value="QR Codes" /><span>QR Codes</span></label>
+          <label class="check-item"><input type="checkbox" value="Google Workspace Setup" /><span>Google Workspace Setup</span></label>
+          <label class="check-item"><input type="checkbox" value="Business Email Setup" /><span>Business Email Setup</span></label>
+          <label class="check-item"><input type="checkbox" value="Social Media Strategy" /><span>Social Media Strategy</span></label>
+          <label class="check-item"><input type="checkbox" value="Content Creation" /><span>Content Creation</span></label>
+          <label class="check-item"><input type="checkbox" value="AI Automation" /><span>AI Automation</span></label>
+          <label class="check-item"><input type="checkbox" value="Business Consulting" /><span>Business Consulting</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="other_services">Anything else you'd like to add?</label>
+        <textarea id="other_services" placeholder="Any other requests, questions, or context for your proposal..."></textarea>
+      </div>
+      <div class="field">
+        <label for="budget_range">Estimated Budget Range</label>
+        <select id="budget_range">
+          <option value="">— Prefer not to say —</option>
+          <option>Under $500</option>
+          <option>$500 – $1,000</option>
+          <option>$1,000 – $2,500</option>
+          <option>$2,500 – $5,000</option>
+          <option>$5,000+</option>
+          <option>Flexible / Let's discuss</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-wrap">
+    <h3>Ready to Submit?</h3>
+    <p>Click below to open your email client with everything pre-filled and addressed to me. Hit send and I'll be in touch within 1–2 business days.</p>
+    <button class="submit-btn" onclick="submitForm()">Send My Proposal Request →</button>
+    <div class="submit-note">This will open your default email app (Gmail, Apple Mail, Outlook, etc.) with your responses pre-loaded.</div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-logo">As Told By <span>Danii</span></div>
+  <div class="footer-tagline">Strategy · Branding · Web Design · Entrepreneurship</div>
+  <div class="footer-contact">
+    <div>📧 <a href="mailto:info@astoldbydanii.com">info@astoldbydanii.com</a></div>
+    <div>📱 <a href="https://instagram.com/AsToldBy_Danii" target="_blank">@AsToldBy_Danii</a></div>
+  </div>
+  <div class="footer-bottom">© 2025 As Told By Danii LLC · Danielle Nixon, CEO & Owner</div>
+</footer>
+
+<script>
+document.querySelectorAll('.pill[data-group]').forEach(pill => {
+  pill.addEventListener('click', () => pill.classList.toggle('active'));
+});
+
+function getActivePills(groupId) {
+  const pills = document.querySelectorAll(`.pill[data-group="${groupId}"].active`);
+  return Array.from(pills).map(p => p.textContent).join(', ') || 'None selected';
+}
+
+function getCheckedValues(containerId) {
+  const checks = document.querySelectorAll(`#${containerId} input[type=checkbox]:checked`);
+  return Array.from(checks).map(c => c.value).join(', ') || 'None selected';
+}
+
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() || '(Not provided)' : '(Not provided)';
+}
+
+function submitForm() {
+  const name = val('contact_name');
+  const biz  = val('biz_name');
+
+  const body = `
+WEBSITE & BRANDING PROPOSAL REQUEST
+Submitted via AsToldByDanii.com
+============================================================
+
+--- BUSINESS INFORMATION ---
+Business Name(s): ${val('biz_name')}
+Contact Name: ${val('contact_name')}
+Email: ${val('contact_email')}
+Phone: ${val('contact_phone')}
+Business Description: ${val('biz_description')}
+Services / Products: ${val('biz_services')}
+Current Website(s): ${val('current_website')}
+Social Media: ${val('social_links')}
+
+--- WEBSITE INFORMATION ---
+Website Purpose: ${getActivePills('purpose')}
+Pages Needed: ${getActivePills('pages')}
+Features Needed: ${getActivePills('features')}
+Inspiration Sites: ${val('inspo_sites')}
+Target Launch Date: ${val('launch_date')}
+
+--- BRANDING ---
+Logo Status: ${val('logo_status')}
+Brand Colors: ${val('brand_colors')}
+Brand Fonts: ${val('brand_fonts')}
+Look & Feel: ${getActivePills('vibe')}
+Brand Notes: ${val('brand_notes')}
+
+--- CONTENT & ASSETS ---
+Content Ready: ${getCheckedValues('assets_checks')}
+Content Notes: ${val('content_notes')}
+
+--- GOALS & VISION ---
+Primary Goal: ${val('primary_goal')}
+Ideal Customer: ${val('ideal_customer')}
+Differentiator: ${val('differentiator')}
+12-Month Business Goals: ${val('biz_goals')}
+Definition of Success: ${val('success_def')}
+
+--- DOMAIN & HOSTING ---
+Domain Name(s): ${val('domain_name')}
+Registrar: ${val('registrar')}
+Hosting Provider: ${val('hosting')}
+Has Login Access: ${val('has_access')}
+
+--- ADDITIONAL SERVICES ---
+Additional Services: ${getCheckedValues('addl_services')}
+Other Requests: ${val('other_services')}
+Budget Range: ${val('budget_range')}
+
+============================================================
+Submitted by: ${name} | ${biz}
+`.trim();
+
+  const subject = encodeURIComponent(`Proposal Request — ${biz} (${name})`);
+  const bodyEncoded = encodeURIComponent(body);
+  window.location.href = `mailto:info@astoldbydanii.com?subject=${subject}&body=${bodyEncoded}`;
+}
+</script>
+</body>
+</html>
