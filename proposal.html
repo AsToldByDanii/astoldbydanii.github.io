@@ -463,16 +463,16 @@ body{background:var(--navy);color:var(--white);font-family:'Poppins',sans-serif;
     <h3>Ready to Submit?</h3>
     <p>Click below to open your email client with everything pre-filled and addressed to me. Hit send and I'll be in touch within 1–2 business days.</p>
     <button class="submit-btn" id="submitBtn" onclick="submitForm()">Send My Proposal Request →</button>
-    <div class="submit-note">This will open your default email app (Gmail, Apple Mail, Outlook, etc.) with your responses pre-loaded.</div>
+    <div class="submit-note">Your responses are sent directly — no email app needed. Just click and you're done.</div>
   </div>
 
   <!-- CONFIRMATION (hidden until submit) -->
-  <div id="confirmBox" style="display:none;background:#0a2a0a;border:1px solid rgba(34,197,94,0.3);border-left:3px solid #22c55e;border-radius:10px;padding:28px 32px;text-align:center;margin-top:0;">
-    <div style="font-size:36px;margin-bottom:12px;">✅</div>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#22c55e;margin-bottom:8px;">You're all set!</div>
-    <div style="font-size:14px;color:#86efac;line-height:1.7;max-width:480px;margin:0 auto 20px;">Your email app should have opened with everything filled in. <strong>Just hit Send</strong> and I'll have your custom proposal ready within 1–2 business days.</div>
-    <div style="font-size:13px;color:#4ade80;background:rgba(34,197,94,0.08);border-radius:8px;padding:12px 20px;display:inline-block;">📧 Sending to: info@astoldbydanii.com</div>
-    <div style="margin-top:16px;font-size:12px;color:rgba(134,239,172,0.6);">Didn't open? <a href="mailto:info@astoldbydanii.com" style="color:#22c55e;">Click here to email directly</a></div>
+  <div id="confirmBox" style="display:none;background:#0a2a0a;border:1px solid rgba(34,197,94,0.3);border-left:3px solid #22c55e;border-radius:10px;padding:32px;text-align:center;margin-top:0;">
+    <div style="font-size:40px;margin-bottom:12px;">✅</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#22c55e;margin-bottom:10px;">Request Received!</div>
+    <div style="font-size:14px;color:#86efac;line-height:1.8;max-width:460px;margin:0 auto 20px;">Your proposal request has been submitted successfully. I'll review everything and have your custom proposal ready within <strong>1–2 business days</strong>.</div>
+    <div style="font-size:13px;color:#4ade80;background:rgba(34,197,94,0.08);border-radius:8px;padding:12px 20px;display:inline-block;margin-bottom:12px;">📧 Sent to: info@astoldbydanii.com</div><br/>
+    <div style="font-size:12px;color:rgba(134,239,172,0.55);margin-top:8px;">Questions in the meantime? DM <a href="https://instagram.com/AsToldBy_Danii" style="color:#22c55e;">@AsToldBy_Danii</a></div>
   </div>
 
 </main>
@@ -493,12 +493,12 @@ document.querySelectorAll('.pill[data-group]').forEach(pill => {
 });
 
 function getActivePills(groupId) {
-  const pills = document.querySelectorAll(`.pill[data-group="${groupId}"].active`);
+  const pills = document.querySelectorAll('.pill[data-group="' + groupId + '"].active');
   return Array.from(pills).map(p => p.textContent).join(', ') || 'None selected';
 }
 
 function getCheckedValues(containerId) {
-  const checks = document.querySelectorAll(`#${containerId} input[type=checkbox]:checked`);
+  const checks = document.querySelectorAll('#' + containerId + ' input[type=checkbox]:checked');
   return Array.from(checks).map(c => c.value).join(', ') || 'None selected';
 }
 
@@ -507,68 +507,75 @@ function val(id) {
   return el ? el.value.trim() || '(Not provided)' : '(Not provided)';
 }
 
-function submitForm() {
+async function submitForm() {
+  const btn = document.getElementById('submitBtn');
   const name = val('contact_name');
   const biz  = val('biz_name');
 
-  const body = `
-WEBSITE & BRANDING PROPOSAL REQUEST
-Submitted via AsToldByDanii.com
-============================================================
+  if (name === '(Not provided)' || val('contact_email') === '(Not provided)') {
+    alert('Please fill in at least your name and email before submitting.');
+    return;
+  }
 
---- BUSINESS INFORMATION ---
-Business Name(s): ${val('biz_name')}
-Contact Name: ${val('contact_name')}
-Email: ${val('contact_email')}
-Phone: ${val('contact_phone')}
-Business Description: ${val('biz_description')}
-Services / Products: ${val('biz_services')}
-Current Website(s): ${val('current_website')}
-Social Media: ${val('social_links')}
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
 
---- WEBSITE INFORMATION ---
-Website Purpose: ${getActivePills('purpose')}
-Pages Needed: ${getActivePills('pages')}
-Features Needed: ${getActivePills('features')}
-Inspiration Sites: ${val('inspo_sites')}
-Target Launch Date: ${val('launch_date')}
+  const data = {
+    _subject: 'Proposal Request — ' + biz + ' (' + name + ')',
+    '01_Business_Name': val('biz_name'),
+    '02_Contact_Name': val('contact_name'),
+    '03_Email': val('contact_email'),
+    '04_Phone': val('contact_phone'),
+    '05_Business_Description': val('biz_description'),
+    '06_Services_Products': val('biz_services'),
+    '07_Current_Website': val('current_website'),
+    '08_Social_Media': val('social_links'),
+    '09_Website_Purpose': getActivePills('purpose'),
+    '10_Pages_Needed': getActivePills('pages'),
+    '11_Features_Needed': getActivePills('features'),
+    '12_Inspiration_Sites': val('inspo_sites'),
+    '13_Target_Launch_Date': val('launch_date'),
+    '14_Logo_Status': val('logo_status'),
+    '15_Brand_Colors': val('brand_colors'),
+    '16_Brand_Fonts': val('brand_fonts'),
+    '17_Look_and_Feel': getActivePills('vibe'),
+    '18_Brand_Notes': val('brand_notes'),
+    '19_Content_Ready': getCheckedValues('assets_checks'),
+    '20_Content_Notes': val('content_notes'),
+    '21_Primary_Goal': val('primary_goal'),
+    '22_Ideal_Customer': val('ideal_customer'),
+    '23_Differentiator': val('differentiator'),
+    '24_12Month_Goals': val('biz_goals'),
+    '25_Definition_of_Success': val('success_def'),
+    '26_Domain_Name': val('domain_name'),
+    '27_Registrar': val('registrar'),
+    '28_Hosting_Provider': val('hosting'),
+    '29_Has_Login_Access': val('has_access'),
+    '30_Additional_Services': getCheckedValues('assets_checks2'),
+    '31_Other_Requests': val('other_services'),
+    '32_Budget_Range': val('budget_range')
+  };
 
---- BRANDING ---
-Logo Status: ${val('logo_status')}
-Brand Colors: ${val('brand_colors')}
-Brand Fonts: ${val('brand_fonts')}
-Look & Feel: ${getActivePills('vibe')}
-Brand Notes: ${val('brand_notes')}
+  try {
+    const res = await fetch('https://formspree.io/f/xlgkpbdq', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
 
---- CONTENT & ASSETS ---
-Content Ready: ${getCheckedValues('assets_checks')}
-Content Notes: ${val('content_notes')}
-
---- GOALS & VISION ---
-Primary Goal: ${val('primary_goal')}
-Ideal Customer: ${val('ideal_customer')}
-Differentiator: ${val('differentiator')}
-12-Month Business Goals: ${val('biz_goals')}
-Definition of Success: ${val('success_def')}
-
---- DOMAIN & HOSTING ---
-Domain Name(s): ${val('domain_name')}
-Registrar: ${val('registrar')}
-Hosting Provider: ${val('hosting')}
-Has Login Access: ${val('has_access')}
-
---- ADDITIONAL SERVICES ---
-Additional Services: ${getCheckedValues('addl_services')}
-Other Requests: ${val('other_services')}
-Budget Range: ${val('budget_range')}
-
-============================================================
-Submitted by: ${name} | ${biz}
-`.trim();
-
-  const subject = encodeURIComponent(`Proposal Request — ${biz} (${name})`);
-  const bodyEncoded = encodeURIComponent(body);
-  const a = document.createElement('a'); a.href = `mailto:info@astoldbydanii.com?subject=${subject}&body=${bodyEncoded}`; document.body.appendChild(a); a.click(); document.body.removeChild(a); document.getElementById('submitWrap').style.display='none'; const box=document.getElementById('confirmBox'); box.style.display='block'; box.scrollIntoView({behavior:'smooth',block:'center'});
+    if (res.ok) {
+      document.getElementById('submitWrap').style.display = 'none';
+      const box = document.getElementById('confirmBox');
+      box.style.display = 'block';
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Send My Proposal Request →';
+    alert('Something went wrong. Please email info@astoldbydanii.com directly.');
+  }
 }
 </script>
 </body>
